@@ -1,17 +1,61 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+<ion-header>
+  <ion-toolbar >
+    <ion-title>Discover</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1 edited - Forms</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content style="background-color: antiquewhite">
+  <!-- <ion-list>
+    <ion-item *ngFor="let x of usersArray">
+        <ion-avatar>
+          <ion-img [src]="x.proPic"></ion-img>
+        </ion-avatar>
+        <ion-label>{{x.name}}</ion-label>
+        <ion-label>{{x.phone}}</ion-label>
+    </ion-item>
+</ion-list> -->
+<ion-segment>
+    <ion-segment-button>All Places</ion-segment-button>
+    <ion-segment-button>Bookable Places</ion-segment-button>
+</ion-segment>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="text-center">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{loadedPlace[0].title}}</ion-card-title>
+            <ion-card-subtitle>{{loadedPlace[0].price}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-img [src]="loadedPlace[0].imgUrl"></ion-img>
+          <ion-card-content>
+            <p>{{loadedPlace[0].description}}</p>
+          </ion-card-content>
+          <div>
+            <ion-button
+              fill="clear"
+              color="primary"
+              [routerLink]="['/','home','discover',loadedPlace[0].id]"
+              >MORE</ion-button
+            >
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="text-center">
+        <ion-list>
+          <ion-item *ngFor="let x of loadedPlace.slice(1)" [routerLink]="['/','home','discover',x.id]" detail>
+            <ion-thumbnail slot="start">
+              <ion-img [src]="x.imgUrl"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{x.title}}</h2>
+              <p>{{x.description}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
