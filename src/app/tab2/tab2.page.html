@@ -7,11 +7,55 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- <button mat-raised-button color="primary"
+    matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+  Action
+</button> -->
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<mat-stepper labelPosition="bottom">
+    <mat-step label="Food"  state="none"> Step 1</mat-step>
+    <mat-step label="Commute" state="none">Step 2</mat-step>
+    <mat-step label="Travel" state="none">Step 3</mat-step>
+    <mat-step label="Energy" state="none">Step 4</mat-step>
+    <mat-step label="Habits" state="none">Step 5</mat-step>
+</mat-stepper>
+
+
+<!-- #docregion states -->
+<mat-stepper>
+  <!-- #docregion label -->
+    <mat-step label="Step 1" state="phone">
+      <p>Put down your phones.</p>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  <!-- #enddocregion label -->
+    <mat-step label="Step 2" state="chat">
+      <p>Socialize with each other.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Step 3">
+      <p>You're welcome.</p>
+    </mat-step>
+
+    <!-- Icon overrides. -->
+  <!-- #docregion override-icons -->
+    <ng-template matStepperIcon="phone">
+      <mat-icon>call_end</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="chat">
+      <mat-icon>forum</mat-icon>
+    </ng-template>
+  </mat-stepper>
+  <!-- #enddocregion override-icons -->
+  <!-- #enddocregion states -->
+
+
+  <!-- Copyright 2021 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
 </ion-content>
